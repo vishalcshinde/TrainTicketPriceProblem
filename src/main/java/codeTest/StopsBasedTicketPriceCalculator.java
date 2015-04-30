@@ -9,11 +9,6 @@ public class StopsBasedTicketPriceCalculator implements TicketPriceCalculator {
 	public static final int FLAT_PRICE = 20;
 	public static final int MAXIMUM_STOPS = StationDB.INSTANCE.getTotalStops() - 1;
 	
-	public StopsBasedTicketPriceCalculator() {
-		
-	}
-	
-
 	public int getPrice(int stops) {
 		if(stops == MAXIMUM_STOPS) {
 			return FLAT_PRICE;
@@ -22,15 +17,11 @@ public class StopsBasedTicketPriceCalculator implements TicketPriceCalculator {
 	}
 	
 	protected int calculatePrice(int numberOfstops, int price) {
-		double factor = Math.ceil(numberOfstops / 5.0);
-		
+		double factor = Math.ceil(numberOfstops / 5.0);	
 		return (int) (10 + 5 * (factor - 1));
 		/*if (numberOfstops <= MINIMUM_STOPS) {
 			return price;
 		}
 		return calculatePrice(numberOfstops - MINIMUM_STOPS, price + PRICE_INRCREEMENT);*/
 	}
-	
-	
-
 }
