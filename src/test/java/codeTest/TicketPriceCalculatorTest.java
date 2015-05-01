@@ -43,6 +43,22 @@ public class TicketPriceCalculatorTest {
 		assertEquals("source is not correct", source, ticket.getSourceStation());
 		assertEquals("dest is not correct", dest, ticket.getDestinationStation());
 		
+		source = new Station("ch","Chetpet");
+		dest = new Station("cb","Chennai Beach"); 
+		ticket = TicketGenerator.INSTANCE.generateTicket(source, dest, TicketType.RETURN);
+		assertEquals("base price should be 20 for distance of 5 station", 20, ticket.getPrice());
+		assertEquals("number of stations should be 4 ", 4, ticket.getStops());
+		assertEquals("source is not correct", source, ticket.getSourceStation());
+		assertEquals("dest is not correct", dest, ticket.getDestinationStation());
+		
+		source = new Station("nu", "Kodambakkam");
+		dest = new Station("gu", "Guindy"); 
+		ticket = TicketGenerator.INSTANCE.generateTicket(source, dest, TicketType.RETURN);
+		assertEquals("base price should be 20 for distance of 5 station", 20, ticket.getPrice());
+		assertEquals("number of stations should be 3 ", 3, ticket.getStops());
+		assertEquals("source is not correct", source, ticket.getSourceStation());
+		assertEquals("dest is not correct", dest, ticket.getDestinationStation());
+		
 	}
 	
 	@Test
@@ -60,6 +76,14 @@ public class TicketPriceCalculatorTest {
 		dest = new Station("gu","Guindy");
 		ticket = TicketGenerator.INSTANCE.generateTicket(source, dest, TicketType.SINGLE);
 		assertEquals("ticket price not correct", 15, ticket.getPrice());
+		assertEquals("number of stops not correct ", 8, ticket.getStops());
+		assertEquals("source is not correct", source, ticket.getSourceStation());
+		assertEquals("dest is not correct", dest, ticket.getDestinationStation());
+		
+		source = new Station("cf","Chennai Fort");
+		dest = new Station("gu","Guindy");
+		ticket = TicketGenerator.INSTANCE.generateTicket(source, dest, TicketType.RETURN);
+		assertEquals("ticket price not correct", 30, ticket.getPrice());
 		assertEquals("number of stops not correct ", 8, ticket.getStops());
 		assertEquals("source is not correct", source, ticket.getSourceStation());
 		assertEquals("dest is not correct", dest, ticket.getDestinationStation());

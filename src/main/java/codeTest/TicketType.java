@@ -11,7 +11,7 @@ public enum TicketType {
 		this.ticketPriceCalculator = ticketPriceCalculator;
 	}
 	
-	public TicketPriceCalculator getTicketPriceCalculator() {
-		return this.ticketPriceCalculator;
+	public int getTicketPrice(int stops) {
+		return this.ticketPriceCalculator.getPrice(stops);
 	}
 }

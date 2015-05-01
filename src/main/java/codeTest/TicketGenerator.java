@@ -12,7 +12,7 @@ public enum TicketGenerator {
 		int srcIndex = StationDB.INSTANCE.getIndexOf(source);
 		int destIndex = StationDB.INSTANCE.getIndexOf(destination);
 		int stops = Math.abs(srcIndex - destIndex);	
-		int price = ticketType.getTicketPriceCalculator().getPrice(stops);
+		int price = ticketType.getTicketPrice(stops);
 		return new Ticket(new Date(), source, destination, stops, price, ticketType);
 	}
 }
